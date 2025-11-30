@@ -1,82 +1,121 @@
-const palavras = ["ABACAXI", "LIVRO", "MELANCIA", "COMPUTADOR", "ESCOLA", "GATO", "BRASIL"];
+
+const palavras = [
+    { palavra: "ABACAXI", dica: "Fruta com o nome de uma marca" },
+    { palavra: "VIADUTO", dica: "Estrutura que permite passagem sobre vias" },
+    { palavra: "METEOROLOGIA", dica: "Ciência que estuda o clima e o tempo" },
+    { palavra: "COMPUTADOR", dica: "Máquina usada para acessar a internet" },
+    { palavra: "QUARENTENA", dica: "Isolamento para evitar propagação de doenças" },
+    { palavra: "PARALELEPIPEDO", dica: "Forma geométrica usada em calçamentos" },
+    { palavra: "BRASIL", dica: "É o maior país da América do Sul" },
+    { palavra: "BIBLIOTECA", dica: "Local onde se guardam e emprestam livros" },
+    { palavra: "PLANETA", dica: "Corpo celeste que orbita uma estrela" },
+    { palavra: "ESFERA", dica: "Forma geométrica perfeitamente redonda" },
+    { palavra: "CAPIVARA", dica: "O maior roedor do mundo, comum no Brasil" },
+    { palavra: "CACHOEIRA", dica: "Queda d’água natural muito bonita" },
+    { palavra: "RELAMPAGO", dica: "Descarga elétrica luminosa durante tempestades" },
+    { palavra: "ABSTRATO", dica: "Algo que não é físico, existe apenas como ideia"},
+    { palavra: "ESTALACTITE", dica: "Formação que desce do teto de cavernas"},
+    { palavra: "CONTORNO", dica: "Linha que define o limite de uma forma"},
+    { palavra: "FLUENTE", dica: "Alguém que fala com facilidade"},
+    { palavra: "GENESIS", dica: "Primeiro livro da Bíblia"},
+    { palavra: "ORUM", dica: "Mundo espiritual, morada dos orixás"},
+    {palavra: "QUIROPRAXISTA", dica: "Trabalha com o alinhamento da coluna e do sistema musculoesquelético"},
+    { palavra: "MARATONA", dica: "Corrida de longa distância, 42 km" }
+];
+
 let palavra = "";
+let dicaAtual = "";
 let exibicao = [];
 let erros = 0;
 const maxErros = 6;
-
 
 const wordDiv = document.getElementById("word");
 const statusDiv = document.getElementById("status");
 const keyboardDiv = document.getElementById("keyboard");
 const restartBtn = document.getElementById("restart");
 
+// NOVO → elemento da dica
+let dicaDiv = null;
 
-const partes = ["head", "body", "armL", "armR", "legL", "legR"]; // ordem
+// PARTES DO BONECO
+const partes = ["head", "body", "armL", "armR", "legL", "legR"];
 
-
-// ===== CONTROLE DE MÚSICA (NOVO CÓDIGO) =====
-
+// ======================================================================
+// CONTROLE DA MÚSICA (SEU CÓDIGO ORIGINAL — COPIADO SEM ALTERAR)
+// ======================================================================
 const musicaFundo = document.getElementById("musica-fundo");
 const botaoSom = document.getElementById("botaoSom");
 const iconeSom = botaoSom.querySelector('i');
+let estaTocando = false;
 
-// O estado inicial é MUDO, porque a música não pode tocar sem interação.
-let estaTocando = false; 
-
-// Inicializa o ícone como MUDO
 iconeSom.classList.remove('fa-volume-high');
-iconeSom.classList.add('fa-volume-xmark'); 
-
+iconeSom.classList.add('fa-volume-xmark');
 
 function toggleMusica() {
     if (estaTocando) {
-        // Pausa a música
         musicaFundo.pause();
         iconeSom.classList.remove('fa-volume-high');
-        iconeSom.classList.add('fa-volume-xmark'); 
+        iconeSom.classList.add('fa-volume-xmark');
         estaTocando = false;
     } else {
-        // Tenta iniciar a música
-        musicaFundo.play().catch(error => {
-            console.log("Música não iniciada. Erro: ", error);
-        });
+        musicaFundo.play().catch(err => console.log(err));
         iconeSom.classList.remove('fa-volume-xmark');
-        iconeSom.classList.add('fa-volume-high'); 
+        iconeSom.classList.add('fa-volume-high');
         estaTocando = true;
     }
 }
 
-// Adiciona o listener de clique ao botão
 botaoSom.addEventListener('click', toggleMusica);
 
-// Fim do controle de música
-// ===========================================
+// ======================================================================
+// SISTEMA DE DICA + JOGO
+// ======================================================================
 
-
-/**
- * Função chamada ao final do jogo (vitória ou derrota).
- * Desativa o teclado e mostra o botão de Recomeçar.
- */
 function finalizarJogo() {
     desativarTeclado();
+
+    // MOVE o botão para ficar depois da dica
+    const wordArea = document.querySelector(".word-area");
+    wordArea.appendChild(restartBtn);
+
     // MOSTRA o botão de recomeçar
     restartBtn.style.display = "block";
 }
 
-
 function escolherPalavra() {
-    palavra = palavras[Math.floor(Math.random() * palavras.length)];
+    const item = palavras[Math.floor(Math.random() * palavras.length)];
+
+    palavra = item.palavra;
+    dicaAtual = item.dica;
+
     exibicao = Array(palavra.length).fill("_");
     wordDiv.textContent = exibicao.join(" ");
     erros = 0;
     statusDiv.textContent = "";
 
     document.querySelectorAll(".part").forEach(p => (p.style.display = "none"));
-
-    // Esconde o botão de recomeçar ao iniciar/recomeçar o jogo
-    restartBtn.style.display = "none"; 
+    restartBtn.style.display = "none";
 
     gerarTeclado();
+    mostrarDica();
+}
+
+function mostrarDica() {
+    if (!dicaDiv) {
+        dicaDiv = document.createElement("div");
+        dicaDiv.id = "dica";
+        dicaDiv.style.marginTop = "20px";
+        dicaDiv.style.fontSize = "1.2rem";
+        dicaDiv.style.opacity = "0.9";
+        dicaDiv.style.fontWeight = "bold";
+        dicaDiv.style.color = "#ffe393";
+        dicaDiv.style.textAlign = "center";
+
+        // AGORA ELA VAI PARA DEBAIXO DO TECLADO
+        document.querySelector(".word-area").appendChild(dicaDiv);
+    }
+
+    dicaDiv.textContent = "💡 Dica: " + dicaAtual;
 }
 
 
@@ -92,7 +131,6 @@ function gerarTeclado() {
     });
 }
 
-
 function tentativa(letra, btn) {
     btn.disabled = true;
 
@@ -105,8 +143,7 @@ function tentativa(letra, btn) {
 
         if (!exibicao.includes("_")) {
             statusDiv.textContent = "🎉 Você venceu!";
-            // CHAMAR A NOVA FUNÇÃO AQUI PARA VITÓRIA
-            finalizarJogo(); 
+            finalizarJogo();
         }
     } else {
         erros++;
@@ -114,19 +151,15 @@ function tentativa(letra, btn) {
 
         if (erros >= maxErros) {
             statusDiv.textContent = `💀 Você perdeu! A palavra era: ${palavra}`;
-            // CHAMAR A NOVA FUNÇÃO AQUI PARA DERROTA
-            finalizarJogo(); 
+            finalizarJogo();
         }
     }
 }
-
 
 function desativarTeclado() {
     document.querySelectorAll(".keyboard button").forEach(btn => btn.disabled = true);
 }
 
-
 restartBtn.onclick = escolherPalavra;
-
 
 window.onload = escolherPalavra;
