@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mini Forca</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+<header class="header">
+<h1 class="title">Mini<span>Forca</span></h1>
+</header>
+
+
+<section class="game">
+<div class="hangman-area">
+<svg id="hangman" viewBox="0 0 200 250">
+<line x1="10" y1="230" x2="150" y2="230" class="base" />
+<line x1="40" y1="230" x2="40" y2="20" class="haste" />
+<line x1="40" y1="20" x2="120" y2="20" class="top" />
+<line x1="120" y1="20" x2="120" y2="40" class="corda" />
+
+
+<circle id="head" cx="120" cy="55" r="15" class="part" />
+<line id="body" x1="120" y1="70" x2="120" y2="120" class="part" />
+<line id="armL" x1="120" y1="80" x2="100" y2="100" class="part" />
+<line id="armR" x1="120" y1="80" x2="140" y2="100" class="part" />
+<line id="legL" x1="120" y1="120" x2="100" y2="150" class="part" />
+<line id="legR" x1="120" y1="120" x2="140" y2="150" class="part" />
+</svg>
+<div id="status"></div>
+</div>
+
+
+<div class="word-area">
+<div id="word" class="word"></div>
+<div id="keyboard" class="keyboard"></div>
+<button id="restart" class="restart">Recomeçar</button>
+</div>
+</section>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

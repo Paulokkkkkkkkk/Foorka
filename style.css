@@ -1,0 +1,79 @@
+body {
+text-align: center;
+}
+
+
+#hangman {
+width: 100%;
+max-width: 300px;
+}
+
+
+.part {
+stroke: white;
+stroke-width: 4;
+display: none;
+}
+
+
+.base, .haste, .top, .corda {
+stroke: #fff;
+stroke-width: 5;
+}
+
+
+.word-area {
+width: 45%;
+text-align: center;
+}
+
+
+.word {
+font-size: 2.5rem;
+letter-spacing: 10px;
+margin-bottom: 20px;
+}
+
+
+.keyboard {
+display: grid;
+grid-template-columns: repeat(9, 1fr);
+gap: 8px;
+}
+
+
+.keyboard button {
+padding: 10px;
+font-size: 1.1rem;
+background: #00000055;
+color: white;
+border: 2px solid white;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.2s;
+}
+
+
+.keyboard button:hover {
+background: #ffffff33;
+}
+
+
+.restart {
+margin-top: 20px;
+padding: 12px 25px;
+border: none;
+background: #ff9f1c;
+color: black;
+font-weight: bold;
+border-radius: 10px;
+cursor: pointer;
+font-size: 1.2rem;
+}
+
+
+#status {
+font-size: 1.2rem;
+margin-top: 10px;
+color: #ffd;
+}
