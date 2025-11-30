@@ -23,56 +23,46 @@ body {
     100% { background-position: 100% 50%; }
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
+/* ===== CONTAINER ===== */
 .container {
     width: 90%;
     max-width: 950px;
     text-align: center;
 }
 
-/* ===== PLAYER DE MÚSICA PERSONALIZADO (NOVO) ===== */
-#musica-fundo {
-    display: none; /* Esconde o elemento <audio> padrão */
-}
+/* ===== BOTÃO DO SOM ===== */
+#musica-fundo { display: none; }
 
 #botaoSom {
-    /* POSICIONAMENTO: Fixa o botão no canto superior esquerdo */
-    position: fixed; 
-    top: 25px;       
-    left: 25px;      
-    z-index: 1000;   
-
-    /* ESTILO */
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
     font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
     color: white;
     transition: 0.2s;
-    outline: none; 
 }
-
 #botaoSom:hover {
     transform: scale(1.12);
     color: #ff9f1a;
 }
 
-/* ===== HEADER E TÍTULO ===== */
-.header {
-    width: 100%;
-    padding-top: 20px;
-}
-
+/* ===== TÍTULO ===== */
 .title {
     font-size: 3rem;
-    margin-bottom: 40px; 
-    margin-top: 0; 
     font-weight: bold;
     text-align: center;
+
+    /* margin ajustada p/ remover o espaçamento estranho */
+    margin: 0 0 60px 0;
 }
 
 .title span {
     color: #ffb347;
+
 }
 
 /* ===== ÁREA DO JOGO ===== */
@@ -93,14 +83,12 @@ body {
     width: 100%;
 }
 
-/* Partes visíveis ao errar */
 .part {
     stroke: #fff;
     stroke-width: 4;
     display: none;
 }
 
-/* Estrutura da forca */
 .base, .haste, .top, .corda {
     stroke: #fff;
     stroke-width: 5;
@@ -110,7 +98,7 @@ body {
 .word-area {
     width: 100%;
     max-width: 500px;
-    margin-top: 20px;
+    text-align: center; /* <- centraliza tudo dentro da área */
 }
 
 .word {
@@ -125,7 +113,6 @@ body {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 10px;
-    justify-items: center;
     margin: auto;
     max-width: 500px;
 }
@@ -152,14 +139,11 @@ body {
     border-color: #555;
 }
 
-/* ===== BOTÃO DE RECOMEÇAR - Centralizado e Escondido por Padrão ===== */
+/* ===== BOTÃO RECOMEÇAR ===== */
 .restart {
-    display: none; 
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto;
-    width: fit-content; 
-    margin-top: 20px;
+    display: none;
+    margin: 20px auto 0 auto;
+    width: fit-content;
     padding: 14px 30px;
     background: #ff9f1c;
     color: black;
@@ -174,19 +158,20 @@ body {
     background: #ffb347;
 }
 
-/* ===== STATUS (GANHOU / PERDEU) ===== */
+/* ===== STATUS ===== */
 #status {
     font-size: 1.4rem;
     margin-top: 15px;
     font-weight: bold;
 }
 
+/* ===== DICA ===== */
 #dica {
     background: #ffffff22;
     padding: 12px;
     border-radius: 10px;
     border: 2px solid #ffffff44;
     width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto 0 auto;
+    color: #ffe393;
 }

@@ -15,15 +15,11 @@
 </audio>
 
 <div class="container">
+
     <header>
         <button id="botaoSom">
             <i class="fa-solid fa-volume-high"></i>
         </button>
-
-        <h1 class="title">Fo<span>orka</span></h1>
-
-        <div id="dica"></div>
-
     </header>
 
     <section class="game">
@@ -41,17 +37,28 @@
                 <line id="legL" x1="120" y1="120" x2="100" y2="150" class="part" />
                 <line id="legR" x1="120" y1="120" x2="140" y2="150" class="part" />
             </svg>
+
             <div id="status"></div>
         </div>
 
         <div class="word-area">
+
+            <!-- TÍTULO AQUI EM CIMA DA PALAVRA -->
+            <h1 class="title">Fo<span>orka</span></h1>
+
+            <!-- PALAVRA/ TRACINHOS -->
             <div id="word" class="word"></div>
+
+            <!-- TECLADO -->
             <div id="keyboard" class="keyboard"></div>
+
+            <!-- BOTÃO RECOMEÇAR -->
             <button id="restart" class="restart">Recomeçar</button>
+
+            <!-- DICA -->
+            <div id="dica"></div>
         </div>
     </section>
-
-    
 </div>
 
 <script src="script.js"></script>
