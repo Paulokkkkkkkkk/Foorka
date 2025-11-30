@@ -1,4 +1,3 @@
-
 const palavras = [
     { palavra: "ABACAXI", dica: "Fruta com o nome de uma marca" },
     { palavra: "VIADUTO", dica: "Estrutura que permite passagem sobre vias" },
@@ -19,7 +18,7 @@ const palavras = [
     { palavra: "FLUENTE", dica: "Alguém que fala com facilidade"},
     { palavra: "GENESIS", dica: "Primeiro livro da Bíblia"},
     { palavra: "ORUM", dica: "Mundo espiritual, morada dos orixás"},
-    {palavra: "QUIROPRAXISTA", dica: "Trabalha com o alinhamento da coluna e do sistema musculoesquelético"},
+    { palavra: "QUIROPRAXISTA", dica: "Profissional que alinha a coluna"},
     { palavra: "MARATONA", dica: "Corrida de longa distância, 42 km" }
 ];
 
@@ -33,16 +32,12 @@ const wordDiv = document.getElementById("word");
 const statusDiv = document.getElementById("status");
 const keyboardDiv = document.getElementById("keyboard");
 const restartBtn = document.getElementById("restart");
-
-// NOVO → elemento da dica
+const endScreen = document.getElementById("endScreen");
 let dicaDiv = null;
 
-// PARTES DO BONECO
 const partes = ["head", "body", "armL", "armR", "legL", "legR"];
 
-// ======================================================================
-// CONTROLE DA MÚSICA (SEU CÓDIGO ORIGINAL — COPIADO SEM ALTERAR)
-// ======================================================================
+/* ===== CONTROLE DA MÚSICA ===== */
 const musicaFundo = document.getElementById("musica-fundo");
 const botaoSom = document.getElementById("botaoSom");
 const iconeSom = botaoSom.querySelector('i');
@@ -67,18 +62,12 @@ function toggleMusica() {
 
 botaoSom.addEventListener('click', toggleMusica);
 
-// ======================================================================
-// SISTEMA DE DICA + JOGO
-// ======================================================================
+/* ===== LÓGICA DO JOGO ===== */
 
 function finalizarJogo() {
     desativarTeclado();
-
-    // MOVE o botão para ficar depois da dica
     const wordArea = document.querySelector(".word-area");
     wordArea.appendChild(restartBtn);
-
-    // MOSTRA o botão de recomeçar
     restartBtn.style.display = "block";
 }
 
@@ -91,6 +80,10 @@ function escolherPalavra() {
     exibicao = Array(palavra.length).fill("_");
     wordDiv.textContent = exibicao.join(" ");
     erros = 0;
+
+    endScreen.style.display = "none";
+    endScreen.className = "end-screen";
+
     statusDiv.textContent = "";
 
     document.querySelectorAll(".part").forEach(p => (p.style.display = "none"));
@@ -110,14 +103,11 @@ function mostrarDica() {
         dicaDiv.style.fontWeight = "bold";
         dicaDiv.style.color = "#ffe393";
         dicaDiv.style.textAlign = "center";
-
-        // AGORA ELA VAI PARA DEBAIXO DO TECLADO
         document.querySelector(".word-area").appendChild(dicaDiv);
     }
 
     dicaDiv.textContent = "💡 Dica: " + dicaAtual;
 }
-
 
 function gerarTeclado() {
     keyboardDiv.innerHTML = "";
@@ -142,7 +132,10 @@ function tentativa(letra, btn) {
         wordDiv.textContent = exibicao.join(" ");
 
         if (!exibicao.includes("_")) {
-            statusDiv.textContent = "🎉 Você venceu!";
+            statusDiv.textContent = "";
+            endScreen.className = "end-screen win";
+            endScreen.innerHTML = "🎉 Você venceu!";
+            endScreen.style.display = "block";
             finalizarJogo();
         }
     } else {
@@ -150,7 +143,10 @@ function tentativa(letra, btn) {
         document.getElementById(partes[erros - 1]).style.display = "block";
 
         if (erros >= maxErros) {
-            statusDiv.textContent = `💀 Você perdeu! A palavra era: ${palavra}`;
+            statusDiv.textContent = "";
+            endScreen.className = "end-screen lose";
+            endScreen.innerHTML = `💀 Você perdeu!<br>📌 Palavra correta: <strong>${palavra}</strong>`;
+            endScreen.style.display = "block";
             finalizarJogo();
         }
     }

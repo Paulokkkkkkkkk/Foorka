@@ -11,7 +11,6 @@
 
 <audio id="musica-fundo" loop>
     <source src="Tema.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
 </audio>
 
 <div class="container">
@@ -39,23 +38,22 @@
             </svg>
 
             <div id="status"></div>
+            <div id="endScreen" class="end-screen"></div>
         </div>
 
         <div class="word-area">
 
-            <!-- TÍTULO AQUI EM CIMA DA PALAVRA -->
-            <h1 class="title">Fo<span>orka</span></h1>
+            <!-- Novo título estilizado -->
+            <h1 class="title">
+                <span class="f1">Fo</span><span class="f2">orka</span>
+            </h1>
 
-            <!-- PALAVRA/ TRACINHOS -->
             <div id="word" class="word"></div>
 
-            <!-- TECLADO -->
             <div id="keyboard" class="keyboard"></div>
 
-            <!-- BOTÃO RECOMEÇAR -->
             <button id="restart" class="restart">Recomeçar</button>
 
-            <!-- DICA -->
             <div id="dica"></div>
         </div>
     </section>
