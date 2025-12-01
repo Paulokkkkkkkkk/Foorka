@@ -180,7 +180,7 @@ function revelarLetra() {
     const letra = palavra[indice];
 
     // Clica automaticamente na letra correta
-    document.querySelectorAll(".keyboard button").forEach(btn => {
+    document.querySelectorAll("#keyboard button").forEach(btn => {
         if (btn.textContent === letra) {
             btn.click();
         }
@@ -192,10 +192,9 @@ function revelarLetra() {
         botaoEspecial.disabled = true;
         botaoEspecial.style.opacity = "0.5";
         botaoEspecial.style.cursor = "not-allowed";
-        botaoEspecial.style.animation = "none"; // para parar o brilho
+        botaoEspecial.style.animation = "none";
     }
 }
-
 
 function tentativa(letra, btn) {
     btn.disabled = true;
@@ -229,9 +228,42 @@ function tentativa(letra, btn) {
 }
 
 function desativarTeclado() {
-    document.querySelectorAll(".keyboard button").forEach(btn => btn.disabled = true);
+    document.querySelectorAll("#keyboard button").forEach(btn => btn.disabled = true);
 }
 
 restartBtn.onclick = escolherPalavra;
+
+
+/* ============================================================
+   ===== SUPORTE AO TECLADO FÍSICO (A–Z + ESPAÇO + ENTER) =====
+   ============================================================ */
+document.addEventListener("keydown", (event) => {
+    // ENTER → Recomeçar se o jogo terminou
+    if ((event.key === "Enter") && endScreen.style.display === "block") {
+        restartBtn.click();
+        return;
+    }
+
+    let tecla = event.key.toUpperCase();
+
+    // Detecta letras
+    if (/^[A-Z]$/.test(tecla)) {
+        const botoes = document.querySelectorAll("#keyboard button");
+        botoes.forEach(btn => {
+            if (btn.textContent === tecla && !btn.disabled) {
+                btn.click();
+            }
+        });
+    }
+
+    // Tecla ESPAÇO → Botão especial
+    if (event.code === "Space") {
+        event.preventDefault();
+        const botaoEspecial = document.querySelector(".botao-especial");
+        if (botaoEspecial && !botaoEspecial.disabled) {
+            botaoEspecial.click();
+        }
+    }
+});
 
 window.onload = escolherPalavra;
