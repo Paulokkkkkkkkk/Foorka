@@ -157,15 +157,16 @@ body {
 /* ===== TECLADO ===== */
 .keyboard {
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(9, 50px); /* largura fixa = teclas iguais */
     gap: 10px;
+    justify-content: center;
     margin: auto;
-    max-width: 500px;
 }
 
 .keyboard button {
-    width: 95%;
-    padding: 10px 0;
+    width: 50px;       /* agora todas iguais */
+    height: 45px;      /* deixa todas proporcionais */
+    padding: 0;
     font-size: 1.1rem;
     background: #ffffff22;
     color: white;
@@ -174,6 +175,7 @@ body {
     cursor: pointer;
     transition: 0.2s;
 }
+
 
 .keyboard button:hover {
     background: #ffffff55;
@@ -224,13 +226,16 @@ body {
 
 /* Botão especial de revelar letra */
 .botao-especial {
-    background: #ffd700aa !important;      /* dourado forte */
+    background: #ffd700aa !important;
     border: 2px solid #ffea74 !important;
     color: #fff8c2 !important;
     font-weight: 900;
     font-size: 1.4rem !important;
     border-radius: 10px;
     animation: pulse 1.2s infinite ease-in-out;
+
+    width: 50px !important;
+    height: 45px !important;
 }
 
 /* Quando desativado */
