@@ -1,5 +1,5 @@
 const palavras = [
-    { palavra: "ABACAXI", dica: "Fruta com o nome de uma marca" },
+    { palavra: "ABACAXI", dica: "Fruta com uma 'coroa' no topo" },
     { palavra: "VIADUTO", dica: "Estrutura que permite passagem sobre vias" },
     { palavra: "METEOROLOGIA", dica: "Ciência que estuda o clima e o tempo" },
     { palavra: "COMPUTADOR", dica: "Máquina usada para acessar a internet" },
@@ -17,8 +17,9 @@ const palavras = [
     { palavra: "CONTORNO", dica: "Linha que define o limite de uma forma"},
     { palavra: "FLUENTE", dica: "Alguém que fala com facilidade"},
     { palavra: "GENESIS", dica: "Primeiro livro da Bíblia"},
-    { palavra: "ORUM", dica: "Mundo espiritual, morada dos orixás"},
+    { palavra: "ORUN", dica: "Mundo espiritual, morada dos orixás (Candomblé)"},
     { palavra: "QUIROPRAXISTA", dica: "Profissional que alinha a coluna"},
+    { palavra: "CARIOCA", dica: "Pessoa que mora no RJ"},
     { palavra: "MARATONA", dica: "Corrida de longa distância, 42 km" }
 ];
 
