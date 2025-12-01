@@ -60,6 +60,12 @@ const palavras = [
     { palavra: "SERTANEJO", dica: "Gênero musical mais ouvido no Brasil" },
     { palavra: "VATICANO", dica: "Menor país do mundo" },
     { palavra: "LICHIA", dica: "Fruta avermelhada, por dentro branca" },
+    { palavra: "MINI", dica: "Algo muito pequeno" },
+    { palavra: "LENTE", dica: "Objeto transparente que manipula os raios de luz através da refração" },
+    { palavra: "LIVE", dica: "Transmissão de vídeo e áudio em tempo real, feita pela internet" },
+    { palavra: "ACEROLA", dica: "Fruta tropical pequena e vermelha" },
+    { palavra: "BLOCO", dica: "Pedaço ou porção de matéria sólida" },
+    { palavra: "RGB", dica: "É a reprodução de cores em dispositivos eletrônicos" }, 
     { palavra: "MARATONA", dica: "Corrida de longa distância, 42 km" }
 ];
 
