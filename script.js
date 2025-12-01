@@ -120,7 +120,42 @@ function gerarTeclado() {
         btn.onclick = () => tentativa(letra, btn);
         keyboardDiv.appendChild(btn);
     });
+
+    // === BOTÃO ESPECIAL DE DICA ===
+    const btnRevelar = document.createElement("button");
+    btnRevelar.textContent = "?";
+    btnRevelar.classList.add("botao-especial");
+    btnRevelar.onclick = revelarLetra;
+    keyboardDiv.appendChild(btnRevelar);
 }
+
+function revelarLetra() {
+    const ocultas = exibicao
+        .map((v, i) => v === "_" ? i : null)
+        .filter(i => i !== null);
+
+    if (ocultas.length === 0) return;
+
+    const indice = ocultas[Math.floor(Math.random() * ocultas.length)];
+    const letra = palavra[indice];
+
+    // Clica automaticamente na letra correta
+    document.querySelectorAll(".keyboard button").forEach(btn => {
+        if (btn.textContent === letra) {
+            btn.click();
+        }
+    });
+
+    // ==== DESATIVAR O BOTÃO ESPECIAL ====
+    const botaoEspecial = document.querySelector(".botao-especial");
+    if (botaoEspecial) {
+        botaoEspecial.disabled = true;
+        botaoEspecial.style.opacity = "0.5";
+        botaoEspecial.style.cursor = "not-allowed";
+        botaoEspecial.style.animation = "none"; // para parar o brilho
+    }
+}
+
 
 function tentativa(letra, btn) {
     btn.disabled = true;
