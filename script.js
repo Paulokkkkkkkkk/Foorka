@@ -20,6 +20,9 @@ const palavras = [
     { palavra: "ORUN", dica: "Mundo espiritual, morada dos orixás (Candomblé)"},
     { palavra: "QUIROPRAXISTA", dica: "Profissional que alinha a coluna"},
     { palavra: "CARIOCA", dica: "Pessoa que mora no RJ"},
+    { palavra: "ANIME", dica: "Animações Japonesas"},
+    { palavra: "CANETA", dica: "É usada pra escrever"},
+    { palavra: "MUNDIAL", dica: "Coisa que o palmeiras não tem"},
     { palavra: "MARATONA", dica: "Corrida de longa distância, 42 km" }
 ];
 
