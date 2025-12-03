@@ -38,7 +38,7 @@ const palavras = [
     { palavra: "WINDOWS", dica: "Sistema operacional muito usado no mundo" },
     { palavra: "ENGENHEIRO", dica: "Profissional que cria e projeta soluções técnicas" },
     { palavra: "SOFTWARE", dica: "Programas que rodam no computador" },
-    { palavra: "GUEPARDO", dica: "Animal mais rápido do mundo" },
+    { palavra: "GUEPARDO", dica: "Animal mais rápido do mundo (terrestre)" },
     { palavra: "LASANHA", dica: "Prato feito com camadas e molho" },
     { palavra: "BATERIA", dica: "Fonte de energia portátil" },
     { palavra: "GUACAMOLE", dica: "Pastosa mexicana feita de abacate" },
